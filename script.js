@@ -18,8 +18,20 @@ hoverList.map((el) => {
   })
 })
 
+
+
+// Generate random color on hover button
+function colors() {
+  hoverList.map(el => el.style.backgroundColor = 'revert')
+  hoverList.map((el) => {
+    el.addEventListener('mouseenter', () => {
+      el.style.backgroundColor = '#'+Math.floor(Math.random()*16777215).toString(16);
+    })
+  })
+  
+}
+
 // Button that cleans canvas background
 function reset() {
-  console.log('click')
-  hoverList.map(el => el.classList.remove('red'))
+  hoverList.map(el => el.style.backgroundColor = 'revert')
 }
