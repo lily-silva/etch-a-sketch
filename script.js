@@ -18,12 +18,8 @@ hoverList.map((el) => {
   })
 })
 
-// Button that erases canvas background
-function erase() {
-  // console.log('click')
-  hoverList.map((el) =>
-    el.addEventListener('mouseenter', () => {
-      el.classList.remove('red')
-    })
-  )
+// Button that cleans canvas background
+function reset() {
+  console.log('click')
+  hoverList.map(el => el.classList.remove('red'))
 }
