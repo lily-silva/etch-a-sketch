@@ -36,13 +36,14 @@
 
   </style>
 </head>
-<body>
+<body onload="start()">
 
   <div class="container">
     <div class="row flex-row">
       <div class="five columns flex-column sidebar">
         <h3>Etch-a-sketch</h3>
         <button class="button" onclick="reset()">clear</button>
+        <button class="button button-primary" onclick="bw()">b&w</button>
         <button class="button button-primary" onclick="colors()">colors</button>
       </div>
       <div class="seven columns">

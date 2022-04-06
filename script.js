@@ -9,29 +9,45 @@ for (let i = 1; i < 257; i++) {
   canvas.appendChild(div)
 }
 
-// Add background to divs on mouseenter
 let hover = document.querySelectorAll('.hover')
 let hoverList = [...hover]
-hoverList.map((el) => {
-  el.addEventListener('mouseenter', () => {
-    el.classList.add('red')
+
+// Add background to divs on mouseenter
+function start() {
+  hoverList.map((el) => {
+    el.addEventListener('mouseenter', () => {
+      el.style.backgroundColor = '#555';
+    })
   })
-})
-
-
+}
+// Revert background-color to transparent
+function revertBg () {
+  hoverList.map(el => el.style.backgroundColor = 'revert')
+}
 
 // Generate random color on hover button
 function colors() {
-  hoverList.map(el => el.style.backgroundColor = 'revert')
   hoverList.map((el) => {
     el.addEventListener('mouseenter', () => {
       el.style.backgroundColor = '#'+Math.floor(Math.random()*16777215).toString(16);
     })
   })
-  
+}
+
+function bw() {
+  hoverList.map((el) => {
+    el.addEventListener('mouseenter', () => {
+      el.style.backgroundColor = '#555';
+    })
+  })
 }
 
 // Button that cleans canvas background
 function reset() {
-  hoverList.map(el => el.style.backgroundColor = 'revert')
+  revertBg()
+  hoverList.map((el) => {
+    el.addEventListener('mouseenter', () => {
+      el.style.backgroundColor = '#555';
+    })
+  })
 }
