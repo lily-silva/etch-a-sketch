@@ -32,7 +32,7 @@
   display: grid;
   grid-template-rows: 100vh;
   grid-template-columns: 100vw;
-
+  background-color: white;
   position: relative;
   width: 100%;
   max-width: 960px;

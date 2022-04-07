@@ -1,0 +1,49 @@
+:root {
+  --columns: 16;
+  --rows: 16;
+}
+
+body {
+  background-color: white;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* padding-right: 20px; */
+}
+
+.flex-row {
+  display: flex;
+  align-items: center;
+}
+
+#gridSize {
+  width: 40px;
+}
+
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance:textfield;
+}
+
+.grid-size {
+  width: 50%;
+  justify-content: center;
+  gap: 10px;
+}
+
+.canvas {
+  overflow: hidden;
+  height: 450px;
+  width: 540px;
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  grid-template-rows: repeat(var(--rows), 1fr);
+}
