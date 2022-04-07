@@ -1,16 +1,6 @@
 'use strict'
 
-// Add 16 divs
-
-function getColor(){ 
-  let R = Math.floor((Math.random() * 100) + 127);
-  let G = Math.floor((Math.random() * 127) + 127);
-  let B = Math.floor((Math.random() * 127) + 127);
-  
-  let rgb = (R << 16) + (G << 8) + B;
-  return `#${rgb.toString(16)}`;   
-}
-
+// create 16x16 grid on start
 function defaultGrid() {
   const canvas = document.querySelector('.canvas')
   const gridSize = getComputedStyle(document.documentElement)
@@ -26,16 +16,21 @@ function defaultGrid() {
   draw()
 }
 
+// draw on canvas
 function draw() {
+  let canvas = document.getElementById('canvas')
   let hover = document.querySelectorAll('.hover')
   let hoverList = [...hover]
-  hoverList.map((el) => {
-    el.addEventListener('mouseenter', () => {
-      el.style.backgroundColor = '#dce0e0'
+  canvas.addEventListener('click', () => {
+    hoverList.map((el) => {
+      el.addEventListener('mouseover', () => {
+        el.style.backgroundColor = '#dce0e0'
+      })
     })
   })
 }
 
+// read user input to change canvas size
 function bigGrid(e) {
   const gridSize = document.getElementById('gridSize')
   let size = gridSize.value
@@ -54,44 +49,38 @@ function bigGrid(e) {
   }
 }
 
-// Revert background-color to transparent
-function revertBg() {
-  let hover = document.querySelectorAll('.hover')
-  let hoverList = [...hover]
-  hoverList.map((el) => (el.style.backgroundColor = 'revert'))
+// generate pastel cores
+function createPastels() {
+  let R = Math.floor(Math.random() * 100 + 127)
+  let G = Math.floor(Math.random() * 127 + 127)
+  let B = Math.floor(Math.random() * 127 + 127)
+
+  let rgb = (R << 16) + (G << 8) + B
+  return `#${rgb.toString(16)}`
 }
 
 // Generate random color on hover button
 function colors() {
+  let canvas = document.getElementById('canvas')
   let hover = document.querySelectorAll('.hover')
   let hoverList = [...hover]
-  hoverList.map((el) => {
-    el.addEventListener('mouseenter', () => {
-      el.style.backgroundColor =
-      getColor()
+  canvas.addEventListener('click', () => {
+    hoverList.map((el) => {
+      el.addEventListener('mouseover', () => {
+        el.style.backgroundColor = createPastels()
+      })
     })
   })
 }
 
-// Trigger b&w color button
-function bw() {
-  let hover = document.querySelectorAll('.hover')
-  let hoverList = [...hover]
-  hoverList.map((el) => {
-    el.addEventListener('mouseenter', () => {
-      el.style.backgroundColor = '#555'
-    })
-  })
-}
-
-// Button that cleans canvas background
+// Reset button to clear background
 function reset() {
-  revertBg()
   let hover = document.querySelectorAll('.hover')
   let hoverList = [...hover]
+  hoverList.map((el) => (el.style.backgroundColor = 'transparent'))
   hoverList.map((el) => {
-    el.addEventListener('mouseenter', () => {
-      el.style.backgroundColor = '#555'
+    el.addEventListener('mouseover', () => {
+      el.style.backgroundColor = 'transparent'
     })
   })
 }
