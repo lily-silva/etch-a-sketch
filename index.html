@@ -1,59 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Etch-a-sketch</title>
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+  <head>
+    <meta charset="utf-8" />
+    <title>Etch-a-sketch</title>
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="//fonts.googleapis.com/css?family=Raleway:400,300,600"
+      rel="stylesheet"
+      type="text/css"
+    />
 
-  <link rel="stylesheet" href="css/normalize.css">
-  <link rel="stylesheet" href="css/skeleton.css">
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/skeleton.css" />
 
-  <style>
-    .red {
-      background-color: #555;
-    }
+    <style>
+      :root {
+        --columns: 16;
+        --rows: 16;
+      }
 
-    .flex-column {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      /* padding-right: 20px; */
-    }
+      .flex-column {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* padding-right: 20px; */
+      }
 
-    .flex-row {
-      display: flex;
-      align-items: center;
-    }
+      .flex-row {
+        display: flex;
+        align-items: center;
+      }
 
-    .canvas {
-      display: grid;
-      grid-template-columns: repeat(16, 25px [col-start]);
-      justify-content: center;
-    }
+      #gridSize {
+        width: 40px;
+      }
 
-  </style>
-</head>
-<body onload="start()">
+      input[type='number']::-webkit-inner-spin-button,
+      input[type='number']::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
 
-  <div class="container">
-    <div class="row flex-row">
-      <div class="five columns flex-column sidebar">
-        <h3>Etch-a-sketch</h3>
-        <button class="button" onclick="reset()">clear</button>
-        <button class="button button-primary" onclick="bw()">b&w</button>
-        <button class="button button-primary" onclick="colors()">colors</button>
-      </div>
-      <div class="seven columns">
-        <div class="canvas">
+      .grid-size {
+        width: 50%;
+        justify-content: center;
+        gap: 10px;
+      }
 
+      .canvas {
+        overflow: hidden;
+        height: 450px;
+        width: 540px;
+        display: grid;
+        grid-template-columns: repeat(var(--columns), 1fr);
+        grid-template-rows: repeat(var(--rows), 1fr);
+      }
+    </style>
+  </head>
+  <body onload="defaultGrid()">
+    <div class="container">
+      <div class="row flex-row">
+        <div class="five columns flex-column sidebar">
+          <h3>Etch-a-sketch</h3>
+          <button class="button" onclick="reset()">clear</button>
+          <button class="button button-primary" onclick="bw()">b&w</button>
+          <button class="button button-primary" onclick="colors()">
+            colors
+          </button>
+            <div class="flex-row grid-size">
+              <label for="gridSize">grid size</label>
+              <input type="number" name="gridSize" id="gridSize" onkeydown="bigGrid(event)"/>
+            
+          </div>
+          <span id="error">chose between<br> # 1 - 64</span>
+        </div>
+        <div class="seven columns">
+          <div class="canvas"></div>
         </div>
       </div>
     </div>
-  </div>
 
-  <script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
