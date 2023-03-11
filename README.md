@@ -15,7 +15,7 @@ This is a web application that mimics the classic toy "Etch-a-sketch". Users can
 - Open the index.html file in your browser
 - Hover your mouse over the grid squares to draw
 - Use the buttons to clear the canvas, switch between drawing modes, and change the grid size
-- Access it in [lily-silva.github.io/calculator/](lily-silva.github.io/calculator/)
+- Access it in [lily-silva.github.io/etch-a-sketch/](lily-silva.github.io/etch-a-sketch/)
 
 ## Features
 
